@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -6,16 +7,71 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script src="https://unpkg.com/fabric@4.6.0/dist/fabric.min.js"></script>
 </head>
 
 <body>
     <h3 class="ui block header">
-        PyTorch Sentiment Analysis
-      </h3>
-    <div class="ui container">
-        {% block content %}
-        {% endblock %}
+        PyTorch Drawn Digit Recognition
+    </h3>
+
+<div class="ui container">
+    <div class="container">
+        <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+
+        <div class="ui items">
+            <div class="item">
+
+                <div class="middle aligned content">
+                    <div class="field">
+                        <canvas width="400" height="400" id="drawarea"></canvas>
+
+                    </div>
+                </div>
+                <div class="middle aligned content">
+                    <div class="header">Subtitle</div>
+                    <div class="ui clearing divider" ></div>
+                    <div class="meta">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
+                        </span>
+                    </div>
+                    <div class="ui hidden divider"></div>
+                    <div class="extra">
+                        <button type="button" class="ui primary button" id="predict">Predict</button>
+                        <button type="button" class="ui button" id="clear-canvas">Clear</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="ui hidden divider"></div>
+        
     </div>
+
+
+    <script>
+        // Create the canvas drawing area
+        var canvas = new fabric.Canvas('drawarea');
+        canvas.isDrawingMode = true;
+        canvas.freeDrawingBrush.width = 20;
+        canvas.freeDrawingBrush.color = "#000000";
+        canvas.backgroundColor = "#ffffff";
+
+        // Clear button callback
+        $("#clear-canvas").click(function () {
+            canvas.clear();
+            canvas.backgroundColor = "#ffffff";
+            canvas.renderAll();
+        });
+
+        // Predict (send image to py script)
+        $("#predict").click(function () {
+        });
+
+    </script>
+
 </body>
 
 </html>

@@ -48,8 +48,6 @@ templates = Jinja2Templates(
 
 
 # Routes
-
-
 @app.get("/", response_class=HTMLResponse)
 def dashboard(
     request: Request,
@@ -60,7 +58,7 @@ def dashboard(
     """
     images = db.query(Images).all()
     return templates.TemplateResponse(
-        "home.html",
+        "layout.html",
         {
             "request": request,
             "images": images,
