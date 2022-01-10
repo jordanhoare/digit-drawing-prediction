@@ -6,6 +6,8 @@ __pycache__/
 hymenoptera_data
 # C extensions
 *.so
+mnist_data
+lenet
 
 # Distribution / packaging
 .Python
