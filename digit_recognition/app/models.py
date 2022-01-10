@@ -8,5 +8,5 @@ class Images(Base):
     __tablename__ = "images"
 
     id = Column(Integer, primary_key=True, index=True)
-    symbol = Column(String)
+    image = Column(String)
     output = Column(Integer)

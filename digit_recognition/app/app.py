@@ -27,13 +27,13 @@ def get_db():
 
 # Pydantic classes
 class ImageRequest(BaseModel):
-    phrase: str
+    image: str
 
 
-class ImageResponse(BaseModel):
-    probabilities: Dict[str, float]
-    sentiment: str
-    confidence: float
+# class ImageResponse(BaseModel):
+#     probabilities: Dict[str, float]
+#     sentiment: str
+#     confidence: float
 
 
 # FastAPI
@@ -48,6 +48,8 @@ templates = Jinja2Templates(
 
 
 # Routes
+
+
 @app.get("/", response_class=HTMLResponse)
 def dashboard(
     request: Request,
@@ -81,7 +83,7 @@ def create_image(
     """
     image = Images()
     image.image = image_request.image
-
+    image.output = "4"
     db.add(image)
     db.commit()
 
