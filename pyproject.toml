@@ -26,6 +26,9 @@ protobuf = "^3.19.1"
 numpy = "^1.22.0"
 scipy = "^1.7.3"
 torchvision = "^0.11.2"
+matplotlib = "^3.5.1"
+opencv-python = "^4.5.5"
+opencv-python-headless = "^4.5.5"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.12b0", allow-prereleases = true}
@@ -33,3 +36,7 @@ black = {version = "^21.12b0", allow-prereleases = true}
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "piwheels"
+url = "https://www.piwheels.org/simple/"

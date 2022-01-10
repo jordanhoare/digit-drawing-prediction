@@ -16,7 +16,7 @@
     </h3>
     <div class="ui active inverted dimmer" id="loading" style="display:none">
         <div class="ui large text loader" id="loading_circle" style="display:none">Loading</div>
-</div>
+    </div>
 
     <div class="ui container">
         <div class="container">
@@ -45,15 +45,36 @@
                             <button type="button" class="ui button" id="clear-canvas">Clear</button>
 
                         </div>
-                        {% for image in images %}
-                        <span>{{ image.output }}</span>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
         </div>
         <div class="ui hidden divider"></div>
+        <div class="ui hidden divider"></div>
+        <div class="ui container">
+            <table class="ui celled structured table">
+                <div class="ui active inverted dimmer" id="loading" style="display:none">
+                    <div class="ui large text loader" id="loading_circle" style="display:none">Loading</div>
+                    <thead>
+                        <tr>
+                            <th rowspan="3">Image id</th>
+                            <th rowspan="2">Image url</th>
+                            <th colspan="3">Prediction</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        {% for image in images %}
+                        <tr>
+                            <td>{{ image.id }}</td>
+                            <td>-</td> <!-- <td>{{ image.image }}</td> -->
+                            <td>{{ image.output }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+
+            </table>
+        </div>
     </div>
 
 
@@ -74,20 +95,20 @@
 
 
         // Predict (send image to py script)
-        var delayInMilliseconds = 2000;
+        var delayInMilliseconds = 30000;
         $("#predict_phrase").click(function TestsFunction() {
             $("#loader").css("display", "")
         });
 
         $("#predict").click(function () {
             var canvas = document.getElementById('drawarea');
-            var dataURL = canvas.toDataURL('image/jpg');
+            var dataURL = canvas.toDataURL({ format: 'jpeg' });
             console.log(dataURL)
             $.ajax({
                 url: '/image',
                 type: 'POST',
                 contentType: 'application/json',
-                data: JSON.stringify({ "image": canvas }),
+                data: JSON.stringify({ "image": dataURL }), // ??????
                 dataType: 'json'
             }).done(console.log('successfully uploaded to db'));
 

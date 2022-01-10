@@ -1,5 +1,6 @@
 from typing import Dict, List
 
+from classifier.classifier import Classifier
 from config import settings
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -46,10 +47,22 @@ templates = Jinja2Templates(
     directory="D:/CompSci/Projects/digit-drawing-prediction/digit_recognition/templates/"
 )
 
+# NLP classification background_task
+def predict_image(
+    id: int,
+):
+    """
+    -------
+    """
+    db = SessionLocal()
+    image = db.query(Images).filter(Images.id == id).first()
+    prediction_output = Classifier(image.image).return_list()
+    image.output = prediction_output
+    db.add(image)
+    db.commit()
+
 
 # Routes
-
-
 @app.get("/", response_class=HTMLResponse)
 def dashboard(
     request: Request,
@@ -76,14 +89,12 @@ def create_image(
     """
     background_tasks: BackgroundTasks,
     background_tasks.add_task(predict_image, image.id)
-
-    ,
     (2) add database record
     (3) give background_tasks a reference of image record
     """
     image = Images()
     image.image = image_request.image
-    image.output = "4"
+    # image.output = "4"  # <<< image_request.output
     db.add(image)
     db.commit()
 
