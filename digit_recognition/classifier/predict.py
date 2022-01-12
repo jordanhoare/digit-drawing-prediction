@@ -59,13 +59,13 @@ class Classifier_Prediction:
     def inference(self):
         image_encoded = self.path.split(",")[1]
         image_bytes = io.BytesIO(base64.b64decode(image_encoded))
-        img = Image.open(image_bytes).convert(mode="1")
+        img = Image.open(image_bytes).convert("L")
         img = img.resize((28, 28))
         x = (255 - np.expand_dims(np.array(img), -1)) / 255.0
 
         with torch.no_grad():
             pred = self.model(
-                torch.unsqueeze(self.T(img), axis=0).float().to(self.device)
+                torch.unsqueeze(self.T(x), axis=0).float().to(self.device)
             )
         return F.softmax(pred, dim=-1).cpu().numpy()
 

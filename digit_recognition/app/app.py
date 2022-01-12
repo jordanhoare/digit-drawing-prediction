@@ -1,6 +1,5 @@
 from typing import Dict, List
 
-from classifier.classifier import Classifier
 from classifier.predict import Classifier_Prediction
 from config import settings
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request

@@ -4,18 +4,15 @@ from io import BytesIO
 
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 import requests
 import torch
 import torch.nn.functional as F
 import torchvision
 from PIL import Image
+from sklearn.metrics import confusion_matrix
 from torch import nn, optim
 from torchvision.transforms import ToTensor
-
-# poe force-cuda11
-
-# %%
-print(torch.cuda.is_available())
 
 # %%
 numb_batch = 64
@@ -30,7 +27,7 @@ val_data = torchvision.datasets.MNIST(
 train_dl = torch.utils.data.DataLoader(train_data, batch_size=numb_batch)
 val_dl = torch.utils.data.DataLoader(val_data, batch_size=numb_batch)
 
-
+# %%
 def create_lenet():
     model = nn.Sequential(
         nn.Conv2d(1, 6, 5, padding=2),
@@ -88,6 +85,19 @@ def train(numb_epoch=3, lr=1e-3, device="cpu"):
     return best_model
 
 
+# %%
+if torch.cuda.is_available():
+    device = torch.device("cuda:0")
+else:
+    device = torch.device("cpu")
+    print("No Cuda Available")
+device
+
+# %%
+lenet = train(40, device=device)
+torch.save(lenet.state_dict(), "lenet.pth")
+
+# %%
 def predict_dl(model, data):
     y_pred = []
     y_true = []
@@ -101,52 +111,6 @@ def predict_dl(model, data):
     return np.array(y_pred), np.array(y_true)
 
 
-def inference(path, model, device):
-    r = requests.get(path)
-    with BytesIO(r.content) as f:
-        img = Image.open(f).convert(mode="L")
-        img = img.resize((28, 28))
-        x = (255 - np.expand_dims(np.array(img), -1)) / 255.0
-    with torch.no_grad():
-        pred = model(torch.unsqueeze(T(x), axis=0).float().to(device))
-        return F.softmax(pred, dim=-1).cpu().numpy()
-
-
-# %%
-if torch.cuda.is_available():
-    device = torch.device("cuda:0")
-else:
-    device = torch.device("cpu")
-    print("No Cuda Available")
-lenet = train(40, device=device)
-torch.save(lenet.state_dict(), "lenet.pth")
-
-# %%
-
-
-# %%
-
-
 # %%
 y_pred, y_true = predict_dl(lenet, val_dl)
-
-
-# %%
-path = "https://previews.123rf.com/images/aroas/aroas1704/aroas170400068/79321959-handwritten-sketch-black-number-8-on-white-background.jpg"
-r = requests.get(path)
-
-content = path.split(";")[1]
-image_encoded = content.split(",")[1]
-image_bytes = io.BytesIO(base64.b64decode(image_encoded))
-
-
-with BytesIO(r.content) as f:
-    img = Image.open(f).convert(mode="L")
-    img = img.resize((28, 28))
-x = (255 - np.expand_dims(np.array(img), -1)) / 255.0
-plt.imshow(x.squeeze(-1), cmap="gray")
-
-# %%
-pred = inference(path, lenet, device=device)
-pred_idx = np.argmax(pred)
-print(f"Predicted: {pred_idx}, Prob: {pred[0][pred_idx]*100} %")
+pd.DataFrame(confusion_matrix(y_true, y_pred, labels=np.arange(0, 10)))
