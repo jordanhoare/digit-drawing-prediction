@@ -79,5 +79,6 @@ class Classifier_Prediction:
         return self.pred_idx, self.prob
 
 
+# poe force-cuda11
 # pred_idx, prob = Classifier_Prediction("").return_list()
 # print(pred_idx)

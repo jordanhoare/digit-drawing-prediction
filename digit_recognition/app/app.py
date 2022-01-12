@@ -31,12 +31,6 @@ class ImageRequest(BaseModel):
     image: str
 
 
-# class ImageResponse(BaseModel):
-#     probabilities: Dict[str, float]
-#     sentiment: str
-#     confidence: float
-
-
 # FastAPI
 app = FastAPI(
     title=settings.name, description=settings.description, version=settings.version

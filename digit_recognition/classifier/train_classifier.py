@@ -4,7 +4,6 @@ from io import BytesIO
 
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 import requests
 import torch
 import torch.nn.functional as F
@@ -113,4 +112,9 @@ def predict_dl(model, data):
 
 # %%
 y_pred, y_true = predict_dl(lenet, val_dl)
-pd.DataFrame(confusion_matrix(y_true, y_pred, labels=np.arange(0, 10)))
+print(confusion_matrix(y_true, y_pred))
+
+# %%
+print(y_true)
+
+# %%
