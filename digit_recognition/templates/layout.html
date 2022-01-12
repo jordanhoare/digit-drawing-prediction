@@ -58,7 +58,7 @@
                     <thead>
                         <tr>
                             <th rowspan="3">Image id</th>
-                            <th rowspan="2">Image url</th>
+                            <th rowspan="2">Confidence</th>
                             <th colspan="3">Prediction</th>
                         </tr>
                     </thead>
@@ -67,8 +67,8 @@
                         {% for image in images %}
                         <tr>
                             <td>{{ image.id }}</td>
-                            <td>-</td> <!-- <td>{{ image.image }}</td> -->
-                            <td>{{ image.output }}</td>
+                            <td>{{ image.probability }}</td> 
+                            <td>{{ image.prediction }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -95,7 +95,7 @@
 
 
         // Predict (send image to py script)
-        var delayInMilliseconds = 30000;
+        var delayInMilliseconds = 10000;
         $("#predict_phrase").click(function TestsFunction() {
             $("#loader").css("display", "")
         });

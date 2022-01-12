@@ -1,6 +1,7 @@
 from typing import Dict, List
 
 from classifier.classifier import Classifier
+from classifier.predict import Classifier_Prediction
 from config import settings
 from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse
@@ -56,8 +57,11 @@ def predict_image(
     """
     db = SessionLocal()
     image = db.query(Images).filter(Images.id == id).first()
-    prediction_output = Classifier(image.image).return_list()
-    image.output = prediction_output
+
+    pred_idx, prob = Classifier_Prediction(image.url).return_list()
+    image.prediction = pred_idx
+    image.probability = prob
+
     db.add(image)
     db.commit()
 
@@ -84,19 +88,22 @@ def dashboard(
 @app.post("/image")
 def create_image(
     image_request: ImageRequest,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
     """
-    background_tasks: BackgroundTasks,
-    background_tasks.add_task(predict_image, image.id)
+
+
     (2) add database record
     (3) give background_tasks a reference of image record
     """
     image = Images()
-    image.image = image_request.image
+    image.url = image_request.image
     # image.output = "4"  # <<< image_request.output
     db.add(image)
     db.commit()
+
+    background_tasks.add_task(predict_image, image.id)
 
     return {
         "code": "success",

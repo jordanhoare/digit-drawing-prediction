@@ -1161,31 +1161,6 @@ url = "https://www.piwheels.org/simple"
 reference = "piwheels"
 
 [[package]]
-name = "pandas"
-version = "1.3.5"
-description = "Powerful data structures for data analysis, time series, and statistics"
-category = "main"
-optional = false
-python-versions = ">=3.7.1"
-
-[package.dependencies]
-numpy = [
-    {version = ">=1.17.3", markers = "platform_machine != \"aarch64\" and platform_machine != \"arm64\" and python_version < \"3.10\""},
-    {version = ">=1.19.2", markers = "platform_machine == \"aarch64\" and python_version < \"3.10\""},
-    {version = ">=1.20.0", markers = "platform_machine == \"arm64\" and python_version < \"3.10\""},
-]
-python-dateutil = ">=2.7.3"
-pytz = ">=2017.3"
-
-[package.extras]
-test = ["hypothesis (>=3.58)", "pytest (>=6.0)", "pytest-xdist"]
-
-[package.source]
-type = "legacy"
-url = "https://www.piwheels.org/simple"
-reference = "piwheels"
-
-[[package]]
 name = "pandocfilters"
 version = "1.5.0"
 description = "Utilities for writing pandoc filters in python"
@@ -1354,7 +1329,7 @@ reference = "piwheels"
 
 [[package]]
 name = "protobuf"
-version = "3.19.1"
+version = "3.19.2"
 description = "Protocol Buffers"
 category = "main"
 optional = false
@@ -1538,19 +1513,6 @@ url = "https://www.piwheels.org/simple"
 reference = "piwheels"
 
 [[package]]
-name = "pytz"
-version = "2021.3"
-description = "World timezone definitions, modern and historical"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.source]
-type = "legacy"
-url = "https://www.piwheels.org/simple"
-reference = "piwheels"
-
-[[package]]
 name = "pywin32"
 version = "303"
 description = "Python for Window Extensions"
@@ -1697,7 +1659,7 @@ reference = "piwheels"
 
 [[package]]
 name = "sacremoses"
-version = "0.0.46"
+version = "0.0.47"
 description = "SacreMoses"
 category = "main"
 optional = false
@@ -1709,6 +1671,26 @@ joblib = "*"
 regex = "*"
 six = "*"
 tqdm = "*"
+
+[[package]]
+name = "scikit-learn"
+version = "1.0.2"
+description = "A set of python modules for machine learning and data mining"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+joblib = ">=0.11"
+numpy = ">=1.14.6"
+scipy = ">=1.1.0"
+threadpoolctl = ">=2.0.0"
+
+[package.extras]
+benchmark = ["matplotlib (>=2.2.3)", "pandas (>=0.25.0)", "memory-profiler (>=0.57.0)"]
+docs = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "seaborn (>=0.9.0)", "memory-profiler (>=0.57.0)", "sphinx (>=4.0.1)", "sphinx-gallery (>=0.7.0)", "numpydoc (>=1.0.0)", "Pillow (>=7.1.2)", "sphinx-prompt (>=1.3.0)", "sphinxext-opengraph (>=0.4.2)"]
+examples = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "seaborn (>=0.9.0)"]
+tests = ["matplotlib (>=2.2.3)", "scikit-image (>=0.14.5)", "pandas (>=0.25.0)", "pytest (>=5.0.1)", "pytest-cov (>=2.9.0)", "flake8 (>=3.8.2)", "black (>=21.6b0)", "mypy (>=0.770)", "pyamg (>=4.0.0)"]
 
 [package.source]
 type = "legacy"
@@ -1764,6 +1746,22 @@ description = "Python 2 and 3 compatibility utilities"
 category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[package.source]
+type = "legacy"
+url = "https://www.piwheels.org/simple"
+reference = "piwheels"
+
+[[package]]
+name = "sklearn"
+version = "0.0"
+description = "A set of python modules for machine learning and data mining"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+scikit-learn = "*"
 
 [package.source]
 type = "legacy"
@@ -1883,6 +1881,19 @@ python-versions = ">= 3.5"
 
 [package.extras]
 test = ["pytest", "pathlib2"]
+
+[package.source]
+type = "legacy"
+url = "https://www.piwheels.org/simple"
+reference = "piwheels"
+
+[[package]]
+name = "threadpoolctl"
+version = "3.0.0"
+description = "threadpoolctl"
+category = "main"
+optional = false
+python-versions = ">=3.6"
 
 [package.source]
 type = "legacy"
@@ -2154,7 +2165,7 @@ reference = "piwheels"
 [metadata]
 lock-version = "1.1"
 python-versions = "~3.9"
-content-hash = "b5073faa517ae19d4f4988055958c35ce5928c1f51d389bd7952a1593f843964"
+content-hash = "95e90acad73c0e4eb3ff4f3ec2891800e745decccdceb3dd9d787be0a1522fb0"
 
 [metadata.files]
 anyio = [
@@ -2385,12 +2396,6 @@ opencv-python-headless = [
 packaging = [
     {file = "packaging-21.3-py3-none-any.whl", hash = "sha256:36bb3108f8e33f88e52e7985b4068e2585b67e5b7b3a0fa2817f9852bc39d2ef"},
 ]
-pandas = [
-    {file = "pandas-1.3.5-cp37-cp37m-linux_armv6l.whl", hash = "sha256:f3cbe23d0d82dbecc29b89e38ba3418c7b5fe7917fff028a0bbf2e269fa2d4d4"},
-    {file = "pandas-1.3.5-cp37-cp37m-linux_armv7l.whl", hash = "sha256:f3cbe23d0d82dbecc29b89e38ba3418c7b5fe7917fff028a0bbf2e269fa2d4d4"},
-    {file = "pandas-1.3.5-cp39-cp39-linux_armv6l.whl", hash = "sha256:ff975873d654c9891758ddf039ea9f97d803a045b6b00ee0efd360ddfbc2f5e3"},
-    {file = "pandas-1.3.5-cp39-cp39-linux_armv7l.whl", hash = "sha256:ff975873d654c9891758ddf039ea9f97d803a045b6b00ee0efd360ddfbc2f5e3"},
-]
 pandocfilters = [
     {file = "pandocfilters-1.5.0-py2.py3-none-any.whl", hash = "sha256:71a86efbf49ad6244c84585e9c72f7d876b4c664f35b6b4cdc709579233be02b"},
 ]
@@ -2428,7 +2433,7 @@ prompt-toolkit = [
     {file = "prompt_toolkit-3.0.24-py3-none-any.whl", hash = "sha256:ef5383b4bc9382d910e6542fdbd56808d2b6a872bb51c70e2878c6caecd81a85"},
 ]
 protobuf = [
-    {file = "protobuf-3.19.1-py2.py3-none-any.whl", hash = "sha256:fa5d00cc574c769fb7fef252fa60c3404955fb121bd52430b257003c4a5cf79f"},
+    {file = "protobuf-3.19.2-py2.py3-none-any.whl", hash = "sha256:f86051ec6509b19ca84e561f2a505e6f14bf2c8fc5acfc996573af99ab984900"},
 ]
 ptyprocess = [
     {file = "ptyprocess-0.7.0-py2.py3-none-any.whl", hash = "sha256:4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35"},
@@ -2471,9 +2476,6 @@ python-dateutil = [
 ]
 python-dotenv = [
     {file = "python_dotenv-0.19.2-py2.py3-none-any.whl", hash = "sha256:ee9d49a9f7f7d64b140b4be62dbe1d3dadaa926b1537b9a5c0a8c76553cd43de"},
-]
-pytz = [
-    {file = "pytz-2021.3-py3-none-any.whl", hash = "sha256:3f0820049ea2e942b7852a85801bc97e29913d278baa5c984e1a4a2075d173d2"},
 ]
 pywin32 = [
     {file = "pywin32-303-cp310-cp310-win32.whl", hash = "sha256:6fed4af057039f309263fd3285d7b8042d41507343cd5fa781d98fcc5b90e8bb"},
@@ -2530,7 +2532,13 @@ requests-toolbelt = [
     {file = "requests_toolbelt-0.9.1-py2.py3-none-any.whl", hash = "sha256:380606e1d10dc85c3bd47bf5a6095f815ec007be7a8b69c878507068df059e6f"},
 ]
 sacremoses = [
-    {file = "sacremoses-0.0.46-py3-none-any.whl", hash = "sha256:e076fd98f4c089b82c0636a4cf96f983e6e6252a22eb59430be4bffc009e2c45"},
+    {file = "sacremoses-0.0.47-py2.py3-none-any.whl", hash = "sha256:7622c6e9fe12d45b7acf4528451bd054c1557c1f6779398f9cd9f28332d92a0b"},
+]
+scikit-learn = [
+    {file = "scikit_learn-1.0.2-cp37-cp37m-linux_armv6l.whl", hash = "sha256:02c5a8ac1603b11a887f52c0305e6c7b637da1be067e23a4a9c07fb19244a13e"},
+    {file = "scikit_learn-1.0.2-cp37-cp37m-linux_armv7l.whl", hash = "sha256:02c5a8ac1603b11a887f52c0305e6c7b637da1be067e23a4a9c07fb19244a13e"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-linux_armv6l.whl", hash = "sha256:d38c419597e3d17b9d44d02845385c92a647dcfc0ab565c97017b6bb7acdcd4d"},
+    {file = "scikit_learn-1.0.2-cp39-cp39-linux_armv7l.whl", hash = "sha256:d38c419597e3d17b9d44d02845385c92a647dcfc0ab565c97017b6bb7acdcd4d"},
 ]
 scipy = [
     {file = "scipy-1.7.3-cp37-cp37m-linux_armv6l.whl", hash = "sha256:2fec5b97046d51212017a3246996fb3bc99fe3225949e3b6e1dbb1e1be0eb57c"},
@@ -2588,6 +2596,9 @@ sentencepiece = [
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
 ]
+sklearn = [
+    {file = "sklearn-0.0-py2.py3-none-any.whl", hash = "sha256:44ea36935b8e62d8f392b52564f5a5222b2c97241fa6772910bec0f6627acb66"},
+]
 sniffio = [
     {file = "sniffio-1.2.0-py3-none-any.whl", hash = "sha256:471b71698eac1c2112a40ce2752bb2f4a4814c22a54a3eed3676bc0f5ca9f663"},
 ]
@@ -2608,6 +2619,9 @@ terminado = [
 ]
 testpath = [
     {file = "testpath-0.5.0-py3-none-any.whl", hash = "sha256:8044f9a0bab6567fc644a3593164e872543bb44225b0e24846e2c89237937589"},
+]
+threadpoolctl = [
+    {file = "threadpoolctl-3.0.0-py3-none-any.whl", hash = "sha256:96ae56014d27a372e0f50d0a802e1e866fbd93c9657c311d92ad88d5b626aa9f"},
 ]
 tokenizers = [
     {file = "tokenizers-0.10.3-cp36-cp36m-macosx_10_11_x86_64.whl", hash = "sha256:4ab688daf4692a6c31dfe42f1f3a4a8c22050705eb69d58d3efde9d55f434586"},
