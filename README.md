@@ -2,7 +2,7 @@ Digit Recognition App
 ============
 [![GitHub Stars](https://img.shields.io/github/stars/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/issues) [![Current Version](https://img.shields.io/badge/version-0.5.0-green.svg)](https://github.com/jordanhoare/digit-drawing-prediction) 
 
-![Alt Text](https://media.giphy.com/media/DpBJUYfqB8LrgLhClY/giphy.gif)
+![Alt Text](https://media.giphy.com/media/aIyeExuk11gpQTzk81/giphy.gif)
 
 This is a python application powered by PyTorch and FastAPI that provides the ability to upload an MNIST digit and return a predicted value after hitting 'Predict'.  
 
