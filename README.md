@@ -1,8 +1,8 @@
-PyTorch Digit Recognition App
+Digit Recognition App
 ============
-[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://jordanhoare.com/stock-app) [![GitHub Stars](https://img.shields.io/github/stars/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/issues) [![Current Version](https://img.shields.io/badge/version-0.5.0-green.svg)](https://github.com/jordanhoare/digit-drawing-prediction) 
+[![GitHub Stars](https://img.shields.io/github/stars/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/stargazers) [![GitHub Issues](https://img.shields.io/github/issues/jordanhoare/digit-drawing-prediction.svg)](https://github.com/jordanhoare/digit-drawing-prediction/issues) [![Current Version](https://img.shields.io/badge/version-0.5.0-green.svg)](https://github.com/jordanhoare/digit-drawing-prediction) 
 
-![Alt Text](https://media4.giphy.com/media/z0KKfDR5NLVAkBiJay/giphy.gif?cid=790b7611583c8efd8e2958f2dee875629b2e666500b88222&rid=giphy.gif)
+![Alt Text](https://media.giphy.com/media/DpBJUYfqB8LrgLhClY/giphy.gif)
 
 This is a python application powered by PyTorch and FastAPI that provides the ability to upload an MNIST digit and return a predicted value after hitting 'Predict'.  
 
