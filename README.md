@@ -7,6 +7,8 @@ Digit Recognition App
 A python app that utilises a Lenet-5 Convolutional Neural Network architecture to identify user drawn digits (0 to 9). The model was trained on the MNIST dataset, using PyTorch, and spun up using FastAPI and a SQLite database. 
 
 
+</br>
+
 ## Project Features
 - [x] instantiate the project using pyenv, poetry
 - [x] connect to SQLite with sqlalchemy object related mapping
