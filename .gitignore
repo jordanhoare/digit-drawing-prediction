@@ -8,6 +8,7 @@ hymenoptera_data
 *.so
 mnist_data
 lenet
+images.db
 
 # Distribution / packaging
 .Python

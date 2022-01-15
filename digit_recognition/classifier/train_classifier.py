@@ -13,8 +13,9 @@ from sklearn.metrics import confusion_matrix
 from torch import nn, optim
 from torchvision.transforms import ToTensor
 
-# %%
-numb_batch = 64
+numb_batch = 28
+# We get the training data from the Mnist library and set download to True.
+# Then we transform the images. The same can be done for the validation data except that that train is False.
 T = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
 train_data = torchvision.datasets.MNIST(
     "mnist_data", train=True, download=True, transform=T
@@ -28,6 +29,9 @@ val_dl = torch.utils.data.DataLoader(val_data, batch_size=numb_batch)
 
 # %%
 def create_lenet():
+    """
+    Mnist dataset, we will be using the LeNet 5 architecture
+    """
     model = nn.Sequential(
         nn.Conv2d(1, 6, 5, padding=2),
         nn.ReLU(),
@@ -93,7 +97,7 @@ else:
 device
 
 # %%
-lenet = train(40, device=device)
+lenet = train(100, device=device)
 torch.save(lenet.state_dict(), "lenet.pth")
 
 # %%
