@@ -30,7 +30,7 @@ To demo this application: clone the repo, navigate to the project folder and run
 - Pyenv
 - Poetry
 
-
+ 
 </br>
 
 </br>
